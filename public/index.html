@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+	<title>My Site</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	</head>
+	<body ng-controller="AppController as vm">
+		<header>
+			<nav class="navbar navbar-default">
+			  <div class="container">
+			    <!-- <div class="navbar-header"> -->
+			      <a class="navbar-brand" href="#">
+			        Home
+			      </a>
+				  <p class="navbar-text navbar-right">Sign via <a href="#" class="btn">Vk</a></p>
+			    <!-- </div> -->
+			  </div>
+			</nav>
+		</header>
+		<section class="container">
+		  <!-- <div >
+			  <ul class="nav nav-tabs">
+			      <li role="presentation" class="active"><a href="#">1 Тренування</a></li>
+			      <li role="presentation"><a href="#">2 Тренування</a></li>
+			      <li role="presentation"><a href="#">3 Тренування</a></li>
+				  <li role="presentation"><a href="#">4 Тренування</a></li>
+			    </ul>
+		  </div> -->
+		  <div class="">
+			  	<uib-tabset active="activeForm">
+			      <uib-tab ng-repeat="item in vm.data" index="$index" heading="{{item.item}}">
+			      </uib-tab>
+			    </uib-tabset>
+		  </div>
+
+
+		</section>
+		<script type="text/javascript" src="libs/angular/angular.js"></script>
+		<script type="text/javascript" src="libs/angular-resource/angular-resource.js"></script>
+		<script type="text/javascript" src="libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		<script type="text/javascript" src="libs/angular-animate/angular-animate.js"></script>
+		<script type="text/javascript" src="libs/angular-touch/angular-touch.js"></script>
+		<script type="text/javascript" src="js/app.module.js"></script>
+		<script type="text/javascript" src="js/controller/app.controller.js"></script>
+	</body>
+</html>

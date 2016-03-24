@@ -1,9 +1,14 @@
+var fs  = require('fs');
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var mysql = require('mysql');
 var app = express();
-// var oauth2lib = require('oauth20-provider');
-// var oauth2 = new oauth2lib({log: {level: 2}});
-// app.use(oauth2.inject());
+
+app.use(express.static('public'));
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded());//for content endcoding
+
 
 var connection = mysql.createConnection({
     host:'localhost',
@@ -21,6 +26,12 @@ connection.connect(function (err) {
 });
 
 app.get('/', function (req, res) {
+    fs.readFile('publuc/index.html', function (err, data) {
+        res.send(data.toString('utf8'));
+    });
+});
+
+app.get('/users', function (req, res) {
     connection.query('SELECT * FROM users', function(err, rows, fields){
         connection.end();
         if (!err) {
